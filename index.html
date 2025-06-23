@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shri Interworks</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #0f0f11;
+      overflow: hidden;
+      font-family: sans-serif;
+      color: #fff;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    nav .logo {
+      display: flex;
+      align-items: center;
+      gap: 20px; 
+    }
+
+    nav .logo img {
+      width: 80px;
+    }
+
+    nav .menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav .menu button {
+      background: transparent;
+      border: 1px solid #ff4500;
+      color: #ff4500;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(220px);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .glow.top {
+      width: 650px;
+      height: 650px;
+      top: -250px;
+      left: -250px;
+      background: radial-gradient(circle at 30% 30%, #ff4500, #ff8c00, transparent 70%),
+                  radial-gradient(circle at 70% 70%, #0000ff, #00008b, transparent 80%);
+    }
+
+    .glow.bottom {
+      width: 650px;
+      height: 650px;
+      bottom: -250px;
+      left: -250px;
+      background: radial-gradient(circle at 30% 70%, #ff4500, #ff8c00, transparent 70%),
+                  radial-gradient(circle at 70% 30%, #0000ff, #00008b, transparent 80%);
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      padding: 60px 40px;
+      height: calc(100vh - 100px);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .hero-text {
+      max-width: 500px;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      margin: 0 0 10px 0;
+    }
+
+    .hero-text p {
+      font-size: 16px;
+      margin: 0 0 20px 0;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .buttons button {
+      background: transparent;
+      border: 1px solid #ff4500;
+      color: #ff4500;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .socials {
+      display: flex;
+      gap: 10px;
+      font-size: 20px;
+    }
+
+    .hero-map {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: 0;
+    }
+
+    .hero-map img {
+      width: 600px;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+  
+  <div class="glow top"></div>
+  <div class="glow bottom"></div>
+
+  
+  <nav>
+    <div class="logo">
+      <img src="C:\Users\Vedabyte\Downloads\Group 40.png" alt="Logo" />
+      <span>SHRI INTERWORKS</span>
+    </div>
+    <div class="menu">
+      <button>Home</button>
+      <button>About Us</button>
+      <button>Contact</button>
+      <button>Services</button>
+    </div>
+  </nav>
+
+  
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Shri Interworks</h1>
+      <p>Connecting Asia’s Workforce with Romania’s Opportunities</p>
+      <div class="buttons">
+        <button>Our Partners →</button>
+        <button>A Note from the Founder →</button>
+      </div>
+      <div class="socials">
+        <span>📘</span>
+        <span>🐦</span>
+        <span>📸</span>
+      </div>
+    </div>
+    <div class="hero-map">
+      <img src="C:\Users\Vedabyte\Downloads\ChatGPT_Image_Jun_9__2025__08_59_17_PM-removebg-preview 1.png" alt="Map" />
+    </div>
+  </div>
+
+</body>
+</html>
