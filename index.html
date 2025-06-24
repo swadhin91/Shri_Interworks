@@ -1,232 +1,313 @@
-body {
-  margin: 0;
-  background-color: #0f0f11;
-  overflow-x: hidden;
-  font-family: sans-serif;
-  color: #fff;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shri Interworks</title>
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  position: relative;
-  z-index: 1;
-}
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-nav .logo {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
+  <style>
+    body {
+      margin: 0;
+      background-color: #0f0f11;
+      overflow-x: hidden;
+      font-family: sans-serif;
+      color: #fff;
+    }
 
-.nav-logo {
-  width: 80px;
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    nav .logo {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-logo {
+        width: 80px;
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
   opacity: 1;
-  border: 2px solid lime;
-}
 
-nav .menu {
-  display: flex;
-  gap: 20px;
-}
+    }
 
-nav .menu button {
-  background: transparent;
-  border: 1px solid #ff4500;
-  color: #ff4500;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 1em;
-}
+    nav .menu {
+      display: flex;
+      gap: 20px;
+    }
 
-.glow {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(220px);
-  opacity: 0.7;
-  pointer-events: none;
-}
+    nav .menu button {
+      background: transparent;
+      border: 1px solid #ff4500;
+      color: #ff4500;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-.glow.top {
-  width: 650px;
-  height: 650px;
-  top: -250px;
-  left: -250px;
-  background: radial-gradient(circle at 30% 30%, #ff4500, #ff8c00, transparent 70%),
-              radial-gradient(circle at 70% 70%, #0000ff, #00008b, transparent 80%);
-}
+    .glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(220px);
+      opacity: 0.7;
+      pointer-events: none;
+    }
 
-.glow.bottom {
-  width: 650px;
-  height: 650px;
-  bottom: -250px;
-  left: -250px;
-  background: radial-gradient(circle at 30% 70%, #ff4500, #ff8c00, transparent 70%),
-              radial-gradient(circle at 70% 30%, #0000ff, #00008b, transparent 80%);
-}
+    .glow.top {
+      width: 650px;
+      height: 650px;
+      top: -250px;
+      left: -250px;
+      background: radial-gradient(circle at 30% 30%, #ff4500, #ff8c00, transparent 70%),
+                  radial-gradient(circle at 70% 70%, #0000ff, #00008b, transparent 80%);
+    }
 
-.hero {
-  position: relative;
-  z-index: 1;
-  padding: 60px 40px;
-  min-height: calc(100vh - 100px);
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
+    .glow.bottom {
+      width: 650px;
+      height: 650px;
+      bottom: -250px;
+      left: -250px;
+      background: radial-gradient(circle at 30% 70%, #ff4500, #ff8c00, transparent 70%),
+                  radial-gradient(circle at 70% 30%, #0000ff, #00008b, transparent 80%);
+    }
 
-.hero-text {
-  max-width: 500px;
-}
+    .hero {
+      position: relative;
+      z-index: 1;
+      padding: 60px 40px;
+      min-height: calc(100vh - 100px);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
 
-.hero-text h1 {
-  font-size: 2.8em;
-  margin: 0 0 10px 0;
-}
+    .hero-text {
+      max-width: 500px;
+    }
 
-.hero-text p {
-  font-size: 1em;
-  margin: 0 0 20px 0;
-}
+    .hero-text h1 {
+      font-size: 48px;
+      margin: 0 0 10px 0;
+    }
 
-.buttons {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
+    .hero-text p {
+      font-size: 16px;
+      margin: 0 0 20px 0;
+    }
 
-.buttons button {
-  background: transparent;
-  border: 1px solid #ff4500;
-  color: #ff4500;
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 1em;
-}
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
 
-.socials {
-  display: flex;
-  gap: 10px;
-  font-size: 1.2em;
-}
+    .buttons button {
+      background: transparent;
+      border: 1px solid #ff4500;
+      color: #ff4500;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
 
-.hero-map {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 0;
-}
+    .socials {
+      display: flex;
+      gap: 10px;
+      font-size: 20px;
+    }
 
-.hero-map img {
-  width: 600px;
-  height: auto;
-  max-width: 100%;
-}
+    .hero-map {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: 0;
+    }
 
-footer {
-  background-color: #000;
-  color: white;
-  padding: 40px 20px;
-}
+    .hero-map img {
+      width: 600px;
+      height: auto;
+    }
 
-.footer-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
+    footer {
+      background-color: #000;
+      color: white;
+      padding: 40px 20px;
+    }
 
-.footer-logo {
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
   width: 60px;
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
   opacity: 0.9;
-  border: 2px solid lime;
 }
 
-.support-links h2 {
-  font-size: 1.8em;
-  margin-bottom: 15px;
-}
 
-.footer-button {
-  background: transparent;
-  border: 1px solid #ff4500;
-  color: #ff4500;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 0.95em;
-  text-decoration: none;
-  font-weight: bold;
-  cursor: pointer;
-  display: inline-block;
-  margin-bottom: 8px;
-  transition: background 0.3s ease;
-}
+    .support-links h2 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+    }
 
-.footer-button span {
-  margin-left: 10px;
-}
+    .footer-button {
+      background: transparent;
+      border: 1px solid #ff4500;
+      color: #ff4500;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: small;
+      text-decoration: none;
+      align-content: last baseline;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
 
-.footer-button:hover {
-  background: rgba(255, 165, 0, 0.2);
-}
+    .footer-button span {
+      margin-left: 10px;
+    }
 
-hr {
-  border: 0;
-  border-top: 1px solid #444;
-  margin: 40px 0 20px;
-}
+    .footer-button:hover {
+      background: rgba(255, 165, 0, 0.2);
+    }
 
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  font-size: 0.9em;
-  margin-bottom: 10px;
-}
+    hr {
+      border: 0;
+      border-top: 1px solid #444;
+      margin: 40px 0 20px;
+    }
 
-.footer-bottom a {
-  color: white;
-  text-decoration: underline;
-  margin: 5px 10px;
-}
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      font-size: 0.9em;
+      margin-bottom: 10px;
+    }
 
-.footer-social {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
+    .footer-bottom a {
+      color: white;
+      text-decoration: underline;
+      margin: 5px 10px;
+    }
 
-.footer-social p {
-  font-size: 0.85em;
-  text-align: center;
-  margin: 0 auto;
-}
+    .footer-social {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-.social-icons a {
-  color: white;
-  font-size: 1.4em;
-  margin: 0 10px;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
+    .footer-social p {
+      margin: auto;
+      font-size: 0.85em;
+      text-align: center;
+      display: flex;
+      align-content: center;
+      
+    }
 
-.social-icons a:hover {
-  color: orange;
-}
+    .social-icons a {
+      color: white;
+      font-size: 24px;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: orange;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="glow top"></div>
+  <div class="glow bottom"></div>
+
+  <nav>
+    <div class="logo">
+      <img src="logo.png" alt="Logo" class="nav-logo" />
+    </div>
+    <div class="menu">
+      <button>Home</button>
+      <button>About Us</button>
+      <button>Contact</button>
+      <button>Services</button>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Shri Interworks</h1>
+      <p>Connecting Asia’s Workforce with Romania’s Opportunities</p>
+      <div class="buttons">
+        <button>Our Partners →</button>
+        <button>A Note from the Founder →</button>
+      </div>
+      <div class="socials">
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+      </div>
+    </div>
+    <div class="hero-map">
+      <img src="map.png" alt="Map" />
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div class="logo-section">
+        <img src="logo.png" alt="Logo" class="footer-logo" />
+      </div>
+
+      <div class="support-links">
+        <h2>Supports us</h2>
+        <a href="#" class="footer-button">News <span>&rarr;</span></a>
+        <a href="#" class="footer-button">Press <span>&rarr;</span></a>
+        <a href="#" class="footer-button">About Us <span>&rarr;</span></a>
+        <a href="#" class="footer-button">Contact <span>&rarr;</span></a>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="footer-bottom">
+      <a href="#">Terms and conditions</a>
+      <a href="#">Privacy Statement</a>
+      <a href="#">Credits</a>
+    </div>
+
+    <div class="footer-social">
+      <p>&copy; A-TEK Digital Studio. All copyrigths have been reserved, 2021</p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
