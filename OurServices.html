@@ -4,41 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SC SHRI INTERWORKS SRL - Our Services</title>
-    <!-- Tailwind CSS CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom background styling from backgroundcode.css */
         body {
             margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif; /* Using Inter font as per instructions */
-            color: #f0f0f0; /* Light text for dark background */
-            min-height: 100vh; /* Ensure body takes full viewport height */
-            display: flex; /* For centering content, adjust as needed */
-            justify-content: center;
+            background-color: #0f0f11; /* Base dark color from original home page */
+            overflow-x: hidden;
+            font-family: sans-serif;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column; /* Allow content to stack vertically */
+        }
+
+        /* Custom glow effects from the home page */
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(220px);
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .glow.top {
+            width: 650px;
+            height: 650px;
+            top: -250px;
+            left: -250px;
+            background: radial-gradient(circle at 30% 30%, #ff4500, #ff8c00, transparent 70%),
+                        radial-gradient(circle at 70% 70%, #0000ff, #00008b, transparent 80%);
+        }
+
+        .glow.bottom {
+            width: 650px;
+            height: 650px;
+            bottom: -250px;
+            left: -250px;
+            background: radial-gradient(circle at 30% 70%, #ff4500, #ff8c00, transparent 70%),
+                        radial-gradient(circle at 70% 30%, #0000ff, #00008b, transparent 80%);
+        }
+
+        /* Navbar styles from the original home page */
+        nav {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            background-color: #1a1a1a; /* Base dark color for the main background */
-
-            /* Top-left gradient */
-            background-image:
-                radial-gradient(circle at 0% 0%, rgba(139, 69, 19, 0.4) 0%, rgba(25, 25, 112, 0.4) 50%, transparent 70%),
-                radial-gradient(circle at 0% 100%, rgba(139, 69, 19, 0.4) 0%, rgba(25, 25, 112, 0.4) 50%, transparent 70%); /* Bottom-left gradient */
-
-            background-repeat: no-repeat;
-            background-position: top left, bottom left;
-            background-size: 50% 50%; /* Adjust size of the gradient blur area */
+            padding: 20px 40px;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Optional: Styling for your content */
+        nav .logo {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav .logo img {
+            width: 80px;
+            height: auto;
+        }
+
+        nav .menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-link {
+            background: transparent;
+            border: 1px solid #ff4500;
+            color: #ff4500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255, 69, 0, 0.2);
+            color: #fff;
+        }
+
+        /* Content container styling (from services.html) */
         .content-container {
-            /* This class is applied to the main content wrapper */
-            text-align: left; /* Align text within the content container */
+            flex-grow: 1; /* Allow content to take available space */
+            text-align: left;
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.3); /* Slightly transparent background for content */
+            background-color: rgba(0, 0, 0, 0.3);
             border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Added shadow for better separation */
+            margin-top: 40px; /* Space from the navbar */
+            margin-bottom: 40px; /* Space from the footer */
+            position: relative; /* For z-index to work against glows */
+            z-index: 1;
         }
 
-        /* Responsive font sizes */
+        /* Responsive font sizes (from services.html) */
         .text-section-title {
             font-size: 1.875rem; /* text-3xl */
             line-height: 2.25rem; /* leading-9 */
@@ -49,12 +113,126 @@
                 line-height: 2.5rem; /* md:leading-10 */
             }
         }
+
+        /* Footer styles from the original home page */
+        footer {
+            background-color: #000;
+            color: white;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+            margin-top: auto; /* Push footer to the bottom */
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            width: 80px;
+            height: 80px;
+        }
+
+        .support-links h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .footer-button {
+            background: transparent;
+            border: 1px solid #ff4500;
+            color: #ff4500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: small;
+            text-decoration: none;
+            align-content: last baseline;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: inline-flex; /* To align arrow */
+            align-items: center;
+            margin-right: 10px; /* Space between buttons */
+            margin-bottom: 10px; /* Space between rows of buttons on small screens */
+        }
+
+        .footer-button span {
+            margin-left: 10px;
+        }
+
+        .footer-button:hover {
+            background: rgba(255, 165, 0, 0.2);
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #444;
+            margin: 40px 0 20px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom a {
+            color: white;
+            text-decoration: underline;
+            margin: 5px 10px;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-social p {
+            margin: auto;
+            font-size: 0.85em;
+            text-align: center;
+            display: flex;
+            align-content: center;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 24px;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: orange;
+        }
     </style>
 </head>
 <body class="selection:bg-blue-800 selection:text-white">
+    <div class="glow top"></div>
+    <div class="glow bottom"></div>
+
+    <nav>
+        <div class="logo">
+            <img src="logo.png" alt="Logo" class="nav-logo" />
+        </div>
+        <div class="menu">
+            <a href="#" class="nav-link">Home</a>
+            <a href="#" class="nav-link">About Us</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <a href="#" class="nav-link">Services</a>
+        </div>
+    </nav>
+
     <div class="container mx-auto p-4 md:p-8">
         <div class="content-container flex flex-col items-center lg:items-start rounded-xl shadow-lg overflow-hidden max-w-7xl mx-auto backdrop-blur-sm bg-opacity-60 border border-gray-700">
-            <!-- Left Column: Text Content (now full width on large screens) -->
             <div class="lg:w-full p-6 md:p-10 text-white space-y-6">
                 <h1 class="text-section-title font-bold mb-6 text-orange-400">Our Services</h1>
 
@@ -141,8 +319,40 @@
                 <p class="font-bold">Thank you for your time and consideration.</p>
                 <p class="font-bold">Best regards,</p>
             </div>
-            <!-- Removed the image section -->
         </div>
     </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="logo-section">
+                <img src="logo.png" alt="Logo" class="footer-logo" />
+            </div>
+
+            <div class="support-links">
+                <h2>Supports us</h2>
+                <a href="#" class="footer-button">News <span>&rarr;</span></a>
+                <a href="#" class="footer-button">Press <span>&rarr;</span></a>
+                <a href="#" class="footer-button">About Us <span>&rarr;</span></a>
+                <a href="#" class="footer-button">Contact <span>&rarr;</span></a>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="footer-bottom">
+            <a href="#">Terms and conditions</a>
+            <a href="#">Privacy Statement</a>
+            <a href="#">Credits</a>
+        </div>
+
+        <div class="footer-social">
+            <p>&copy; A-TEK Digital Studio. All copyrigths have been reserved, 2021</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
