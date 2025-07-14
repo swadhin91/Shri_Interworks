@@ -24,6 +24,7 @@
       padding: 20px 40px;
       position: relative;
       z-index: 1;
+      flex-wrap: wrap;
     }
 
     nav .logo {
@@ -40,6 +41,8 @@
     nav .menu {
       display: flex;
       gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
     }
 
     .nav-link {
@@ -93,6 +96,7 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      flex-wrap: wrap;
     }
 
     .hero-text {
@@ -113,6 +117,7 @@
       display: flex;
       gap: 10px;
       margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
     .buttons button {
@@ -135,14 +140,14 @@
     }
 
     .hero-map {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      z-index: 0;
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin-top: 30px;
     }
 
     .hero-map img {
-      width: 600px;
+      width: 100%;
       height: auto;
     }
 
@@ -235,27 +240,8 @@
       color: orange;
     }
 
-    /* Responsive Styles for Mobile */
-    @media screen and (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 20px;
-      }
-
-      nav .logo {
-        justify-content: center;
-        width: 100%;
-        margin-bottom: 10px;
-      }
-
-      nav .menu {
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-        align-items: flex-start;
-      }
-
+    /* Optional: Adjustments for small screens */
+    @media screen and (max-width: 600px) {
       .hero {
         flex-direction: column;
         align-items: flex-start;
@@ -280,34 +266,10 @@
         justify-content: center;
       }
 
-      .socials {
-        font-size: 18px;
-      }
-
-      .hero-map {
-        position: relative;
-        width: 100%;
-        margin-top: 30px;
-      }
-
-      .hero-map img {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-      }
-
-      footer {
-        padding: 30px 15px;
-      }
-
       .footer-container {
         flex-direction: column;
         align-items: center;
         text-align: center;
-      }
-
-      .footer-logo {
-        margin-bottom: 20px;
       }
 
       .footer-bottom {
