@@ -32,37 +32,32 @@
       gap: 20px;
     }
 
-  
-
-   nav .logo img {
+    nav .logo img {
       width: 80px;
       height: auto;
     }
-    
 
     nav .menu {
       display: flex;
       gap: 20px;
     }
+
     .nav-link {
-  background: transparent;
-  border: 1px solid #ff4500;
-  color: #ff4500;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background 0.3s ease, color 0.3s ease;
-}
+      background: transparent;
+      border: 1px solid #ff4500;
+      color: #ff4500;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
 
-.nav-link:hover {
-  background-color: rgba(255, 69, 0, 0.2);
-  color: #fff;
-}
-
-
- 
+    .nav-link:hover {
+      background-color: rgba(255, 69, 0, 0.2);
+      color: #fff;
+    }
 
     .glow {
       position: absolute;
@@ -165,10 +160,9 @@
     }
 
     .footer-logo {
-  width: 80px;
-  height: 80px;
-}
-
+      width: 80px;
+      height: 80px;
+    }
 
     .support-links h2 {
       font-size: 1.8em;
@@ -183,7 +177,6 @@
       border-radius: 20px;
       font-size: small;
       text-decoration: none;
-      align-content: last baseline;
       font-weight: bold;
       cursor: pointer;
       transition: background 0.3s ease;
@@ -228,9 +221,6 @@
       margin: auto;
       font-size: 0.85em;
       text-align: center;
-      display: flex;
-      align-content: center;
-      
     }
 
     .social-icons a {
@@ -244,6 +234,100 @@
     .social-icons a:hover {
       color: orange;
     }
+
+    /* Responsive Styles for Mobile */
+    @media screen and (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+      }
+
+      nav .logo {
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      nav .menu {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        align-items: flex-start;
+      }
+
+      .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 40px 20px;
+      }
+
+      .hero-text h1 {
+        font-size: 32px;
+      }
+
+      .hero-text p {
+        font-size: 14px;
+      }
+
+      .buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .buttons button {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .socials {
+        font-size: 18px;
+      }
+
+      .hero-map {
+        position: relative;
+        width: 100%;
+        margin-top: 30px;
+      }
+
+      .hero-map img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      footer {
+        padding: 30px 15px;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-logo {
+        margin-bottom: 20px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-social {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .footer-social p {
+        text-align: center;
+      }
+
+      .social-icons a {
+        font-size: 20px;
+      }
+    }
   </style>
 </head>
 
@@ -256,10 +340,10 @@
       <img src="logo.png" alt="Logo" class="nav-logo" />
     </div>
     <div class="menu">
-    <a href="#" class="nav-link">Home</a>
-  <a href="#" class="nav-link">About Us</a>
- <a href="contact.html" class="nav-link" rel="noopener noreferrer">Contact</a>
-  <a href="OurServices.html" class="nav-link">Services</a>
+      <a href="#" class="nav-link">Home</a>
+      <a href="#" class="nav-link">About Us</a>
+      <a href="contact.html" class="nav-link" rel="noopener noreferrer">Contact</a>
+      <a href="OurServices.html" class="nav-link">Services</a>
     </div>
   </nav>
 
@@ -287,8 +371,7 @@
       <div class="logo-section">
         <img src="logo.png" alt="Logo" class="footer-logo" />
       </div>
-
-     
+    </div>
 
     <hr />
 
@@ -299,7 +382,7 @@
     </div>
 
     <div class="footer-social">
-      <p>&copy; A-TEK Digital Studio. All copyrigths have been reserved, 2021</p>
+      <p>&copy; A-TEK Digital Studio. All copyrights have been reserved, 2021</p>
       <div class="social-icons">
         <a href="#"><i class="fab fa-facebook-f"></i></a>
         <a href="#"><i class="fab fa-twitter"></i></a>
