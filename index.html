@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shri Interworks</title>
 
-  <!-- Font Awesome for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
@@ -24,7 +23,6 @@
       padding: 20px 40px;
       position: relative;
       z-index: 1;
-      flex-wrap: wrap;
     }
 
     nav .logo {
@@ -37,12 +35,10 @@
       width: 80px;
       height: auto;
     }
-
+    
     nav .menu {
       display: flex;
       gap: 20px;
-      flex-wrap: wrap;
-      align-items: center;
     }
 
     .nav-link {
@@ -54,14 +50,15 @@
       font-weight: bold;
       cursor: pointer;
       text-decoration: none;
-      transition: background 0.3s ease, color 0.3s ease;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease; /* Added transform for hover */
     }
 
     .nav-link:hover {
       background-color: rgba(255, 69, 0, 0.2);
       color: #fff;
+      transform: translateY(-3px); /* Slight lift on hover */
     }
-
+ 
     .glow {
       position: absolute;
       border-radius: 50%;
@@ -96,7 +93,7 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      flex-wrap: wrap;
+      overflow: hidden; /* Ensure content doesn't overflow */
     }
 
     .hero-text {
@@ -106,6 +103,7 @@
     .hero-text h1 {
       font-size: 48px;
       margin: 0 0 10px 0;
+      text-shadow: 0 0 10px rgba(255, 69, 0, 0.5); /* Subtle text glow */
     }
 
     .hero-text p {
@@ -117,7 +115,6 @@
       display: flex;
       gap: 10px;
       margin-bottom: 20px;
-      flex-wrap: wrap;
     }
 
     .buttons button {
@@ -131,6 +128,13 @@
       display: flex;
       align-items: center;
       gap: 5px;
+      transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow for hover */
+    }
+
+    .buttons button:hover {
+      background-color: rgba(255, 69, 0, 0.2);
+      color: #fff;
+      box-shadow: 0 0 15px rgba(255, 69, 0, 0.5); /* Glowing effect on hover */
     }
 
     .socials {
@@ -139,16 +143,39 @@
       font-size: 20px;
     }
 
-    .hero-map {
-      position: relative;
-      width: 100%;
-      max-width: 600px;
-      margin-top: 30px;
+    .socials i {
+      color: #ff4500; /* Set social icon color */
+      transition: transform 0.2s ease, color 0.2s ease; /* Added transform and color for hover */
     }
 
-    .hero-map img {
-      width: 100%;
-      height: auto;
+    .socials i:hover {
+      transform: translateY(-3px) scale(1.1); /* Lift and slight enlarge on hover */
+      color: #ff8c00; /* Change color on hover */
+    }
+
+    .hero-map {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: 0;
+      transform: scale(1.1); /* Slightly larger map */
+      transform-origin: bottom right; /* Scale from bottom right */
+      opacity: 0.3; /* Further reduced opacity for blending */
+      filter: drop-shadow(0 0 10px rgba(0, 0, 255, 0.3)); /* Softer blue glow for the map */
+      transition: opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease; /* Added transition for hover */
+    }
+
+    .hero-map:hover { /* Hover effect for the map */
+      opacity: 0.7; /* Increase opacity on hover to make it stand out */
+      filter: drop-shadow(0 0 30px rgba(0, 0, 255, 0.8)); /* Stronger blue glow on hover */
+      transform: scale(1.15); /* Slightly larger scale on hover */
+    }
+
+    .hero-map iframe {
+      width: 800px; /* Increased width */
+      height: 600px; /* Increased height proportionally */
+      border-radius: 0; /* Removed border-radius */
+      overflow: hidden; /* Ensures no weird overlaps */
     }
 
     footer {
@@ -182,9 +209,12 @@
       border-radius: 20px;
       font-size: small;
       text-decoration: none;
+      align-content: last baseline;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease; /* Added transform for hover */
+      margin-bottom: 10px; /* Added margin for better spacing */
+      display: inline-flex; /* Allow it to take up less space */
     }
 
     .footer-button span {
@@ -193,6 +223,8 @@
 
     .footer-button:hover {
       background: rgba(255, 165, 0, 0.2);
+      color: #fff;
+      transform: translateX(5px); /* Slide right on hover */
     }
 
     hr {
@@ -213,6 +245,11 @@
       color: white;
       text-decoration: underline;
       margin: 5px 10px;
+      transition: color 0.2s ease; /* Added color for hover */
+    }
+
+    .footer-bottom a:hover {
+      color: #ff4500; /* Change color on hover */
     }
 
     .footer-social {
@@ -226,6 +263,9 @@
       margin: auto;
       font-size: 0.85em;
       text-align: center;
+      display: flex;
+      align-content: center;
+      
     }
 
     .social-icons a {
@@ -233,62 +273,12 @@
       font-size: 24px;
       margin: 0 10px;
       text-decoration: none;
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, transform 0.2s ease; /* Added transform for hover */
     }
 
     .social-icons a:hover {
       color: orange;
-    }
-
-    /* Optional: Adjustments for small screens */
-    @media screen and (max-width: 600px) {
-      .hero {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 40px 20px;
-      }
-
-      .hero-text h1 {
-        font-size: 32px;
-      }
-
-      .hero-text p {
-        font-size: 14px;
-      }
-
-      .buttons {
-        flex-direction: column;
-        width: 100%;
-      }
-
-      .buttons button {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .footer-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .footer-social {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      .footer-social p {
-        text-align: center;
-      }
-
-      .social-icons a {
-        font-size: 20px;
-      }
+      transform: translateY(-3px) scale(1.1); /* Lift and slight enlarge on hover */
     }
   </style>
 </head>
@@ -302,10 +292,10 @@
       <img src="logo.png" alt="Logo" class="nav-logo" />
     </div>
     <div class="menu">
-      <a href="#" class="nav-link">Home</a>
-      <a href="#" class="nav-link">About Us</a>
-      <a href="contact.html" class="nav-link" rel="noopener noreferrer">Contact</a>
-      <a href="OurServices.html" class="nav-link">Services</a>
+    <a href="#" class="nav-link">Home</a>
+    <a href="#" class="nav-link">About Us</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="#" class="nav-link">Services</a>
     </div>
   </nav>
 
@@ -324,7 +314,7 @@
       </div>
     </div>
     <div class="hero-map">
-      <img src="map.png" alt="Map" />
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d89245.40782467969!2d25.514062045964305!3d45.6524484812142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b35b862aa214f1%3A0x6cf5f2ef54391e0f!2sBra%C8%99ov%2C%20Romania!5e0!3m2!1sen!2sin!4v1752592186640!5m2!1sen!2sin" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 
@@ -332,6 +322,14 @@
     <div class="footer-container">
       <div class="logo-section">
         <img src="logo.png" alt="Logo" class="footer-logo" />
+      </div>
+
+      <div class="support-links">
+        <h2>Supports us</h2>
+        <a href="#" class="footer-button">News <span>→</span></a>
+        <a href="#" class="footer-button">Press <span>→</span></a>
+        <a href="#" class="footer-button">About Us <span>→</span></a>
+        <a href="#" class="footer-button">Contact <span>→</span></a>
       </div>
     </div>
 
@@ -344,7 +342,7 @@
     </div>
 
     <div class="footer-social">
-      <p>&copy; A-TEK Digital Studio. All copyrights have been reserved, 2021</p>
+      <p>© A-TEK Digital Studio. All copyrigths have been reserved, 2021</p>
       <div class="social-icons">
         <a href="#"><i class="fab fa-facebook-f"></i></a>
         <a href="#"><i class="fab fa-twitter"></i></a>
