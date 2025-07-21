@@ -22,6 +22,22 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column; /* Allows footer to stick to bottom */
+            position: relative; /* Needed for absolute positioning of video if not fixed */
+        }
+
+        /* Video Background Styles */
+        #video-background {
+            position: fixed; /* Use 'fixed' to keep it in the viewport regardless of scroll */
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2; /* Even lower z-index than the glows */
+            background-size: cover;
+            filter: brightness(0.4) grayscale(0.2); /* Adjust as needed */
+            object-fit: cover; /* Ensures the video covers the entire element without distortion */
         }
 
         /* Custom Glow Effects (reverted to original orange/blue tones, but emphasizing orange) */
@@ -31,7 +47,7 @@
             filter: blur(200px);
             opacity: 0.4;
             pointer-events: none;
-            z-index: 0;
+            z-index: -1; /* Place glows above the video but below content */
         }
 
         .glow.top {
@@ -60,8 +76,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            position: relative;
-            z-index: 2;
+            position: relative; /* Keep it relative or higher z-index than glows/video */
+            z-index: 2; /* Ensure nav is on top */
         }
 
         nav .logo {
@@ -103,13 +119,13 @@
             flex-grow: 1;
             text-align: left;
             padding: 30px;
-            background-color: rgba(15, 15, 17, 0.85);
+            background-color: rgba(15, 15, 17, 0.85); /* Slightly transparent to see video */
             border-radius: 12px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
             margin-top: 40px;
             margin-bottom: 40px;
             position: relative;
-            z-index: 1;
+            z-index: 1; /* Ensure content is above glows and video */
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
@@ -122,6 +138,16 @@
             text-shadow: 0 0 15px rgba(255, 140, 0, 0.8); /* More intense glow */
             font-weight: 700;
         }
+
+        /* NEW STYLE FOR THE MAIN TITLE */
+        .text-section-title.white-glow {
+            color: #f0f0f0; /* Pearl white */
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), /* White glow */
+                         0 0 25px rgba(255, 255, 255, 0.6), /* Stronger white glow */
+                         0 0 35px rgba(255, 255, 255, 0.4); /* Even stronger white glow */
+        }
+        /* END NEW STYLE */
+
         .text-sub-section-title {
             font-size: 2.1rem;
             line-height: 1.3;
@@ -221,15 +247,14 @@
             font-weight: 500;
         }
 
-        /* Footer styles (new structure, colors reverted to original orange/blue with more orange) */
+        /* Footer styles (copied from index.html) */
         footer {
-            background: #151518;
+            background: #101010;
             padding: 50px 40px 60px;
-            margin-top: auto;
+            margin-top: 80px; /* Adjusted margin-top to match original index.html footer spacing */
             position: relative;
-            z-index: 1;
             color: #fff;
-            border-top: 1px solid #2a2a2e;
+            z-index: 1; /* Ensure footer is above glows */
         }
 
         .footer-container {
@@ -241,76 +266,60 @@
             margin: 0 auto;
         }
 
-        .footer-left-content {
+        .footer-left { /* Renamed from .footer-left-content to match index.html */
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             max-width: 300px;
         }
 
-        .footer-left-content img {
-            width: 90px;
-            margin-bottom: 15px;
+        .footer-left img {
+            width: 70px; /* Reverted to 70px as in index.html */
+            margin-bottom: 10px;
         }
 
         .footer-slogan {
-            font-size: 1.0em;
-            color: #ff8c00; /* Original orange */
+            font-size: 0.9em; /* Reverted to 0.9em as in index.html */
+            color: #ff8c00;
             font-style: italic;
-            text-shadow: 0 0 8px rgba(255, 140, 0, 0.8);
-            line-height: 1.4;
+            text-shadow: 0 0 6px #ff8c00;
+            line-height: 1.4; /* Added for consistency */
         }
 
         .footer-section {
             flex: 1;
-            min-width: 200px;
+            min-width: 220px; /* Reverted to 220px as in index.html */
         }
 
         .footer-section h3 {
-            font-size: 22px;
-            margin-bottom: 20px;
-            color: #ff4500; /* Original orange */
-            text-shadow: 0 0 7px rgba(255, 69, 0, 0.5);
+            font-size: 20px; /* Reverted to 20px as in index.html */
+            margin-bottom: 15px; /* Reverted to 15px as in index.html */
+            color: #ff4500;
+            text-shadow: 0 0 5px #ff4500;
         }
 
         .footer-list {
-            list-style: none;
+            list-style: none; /* Reverted to none as in index.html */
             padding-left: 0;
-            line-height: 2;
-            font-size: 16px;
+            line-height: 1.8; /* Reverted to 1.8 as in index.html */
+            font-size: 15px; /* Reverted to 15px as in index.html */
         }
 
-        .footer-list li a {
-            color: #c8c8c8;
+        .footer-list li a { /* Added styling for links within footer lists */
+            color: #d0d0d0;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        .footer-list li a:hover {
-            color: #ff8c00; /* Original orange on hover */
-        }
-
-        .footer-contact-info p {
-            font-size: 15px;
-            margin-bottom: 10px;
-            color: #c8c8c8;
-            line-height: 1.6;
-        }
-
-        .footer-contact-info a {
-            color: #ff4500; /* Original orange for contact links */
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .footer-contact-info a:hover {
-            color: #fff;
+        .footer-list li a:hover { /* Added hover for links within footer lists */
+            color: #ff8c00;
         }
 
         hr {
-            margin: 50px auto 30px;
+            margin: 40px auto 20px; /* Reverted margin as in index.html */
             border: 0;
-            border-top: 1px solid #333;
-            max-width: 1200px;
+            border-top: 1px solid #444; /* Reverted border color as in index.html */
+            max-width: 1200px; /* Match container width */
         }
 
         .footer-bottom-row {
@@ -318,52 +327,54 @@
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: 25px;
-            margin-bottom: 15px;
+            gap: 20px; /* Reverted gap as in index.html */
+            margin-bottom: 10px; /* Reverted margin as in index.html */
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
         }
 
         .footer-bottom-row a {
-            color: #ff8c00; /* Original orange for bottom links */
-            text-decoration: none;
-            font-size: 14.5px;
-            transition: color 0.3s ease, text-decoration 0.3s ease;
+            color: #ff8c00; /* Reverted color as in index.html */
+            text-decoration: underline; /* Reverted underline as in index.html */
+            font-size: 14px; /* Reverted font size as in index.html */
+            transition: 0.3s ease;
         }
 
         .footer-bottom-row a:hover {
             color: #fff;
-            text-decoration: underline;
         }
 
         .footer-socials-bottom {
+            /* This was absolute in index.html, but for a more responsive layout,
+              it's better to keep it within the flow or adjust its positioning
+              based on parent. For now, matching index.html's absolute positioning
+              but ensuring it's within the footer's context. */
+            position: absolute; /* Reverted to absolute as in index.html */
+            bottom: 10px; /* Reverted to 10px as in index.html */
+            right: 10px; /* Reverted to 10px as in index.html */
             display: flex;
-            justify-content: center;
-            width: 100%;
-            margin-top: 25px;
-            gap: 20px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
+            gap: 15px; /* Reverted gap as in index.html */
+            /* Removed width: 100%; margin-left: auto; margin-right: auto;
+              as they conflict with absolute positioning. */
         }
 
-        .footer-socials-bottom a {
+        .footer-socials-bottom a { /* Changed from i to a for proper link styling */
             color: #fff;
-            font-size: 22px;
-            transition: color 0.3s ease, transform 0.3s ease;
+            font-size: 18px; /* Reverted to 18px as in index.html */
+            transition: 0.3s ease;
         }
 
-        .footer-socials-bottom a:hover {
-            color: #ff4500; /* Original orange on hover */
-            transform: scale(1.25);
+        .footer-socials-bottom a:hover { /* Changed from i to a for proper link styling */
+            color: #ff4500;
+            transform: scale(1.2);
         }
 
         .footer-credit {
             text-align: center;
-            font-size: 0.85em;
-            color: #999;
-            margin-top: 15px;
+            font-size: 0.8em; /* Reverted to 0.8em as in index.html */
+            color: #888;
+            margin-top: 10px; /* Reverted margin as in index.html */
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
@@ -427,7 +438,7 @@
                 text-align: center;
                 gap: 30px;
             }
-            .footer-left-content {
+            .footer-left { /* Renamed to match index.html */
                 align-items: center;
             }
             .footer-section {
@@ -444,6 +455,9 @@
             .footer-bottom-row, .footer-socials-bottom {
                 flex-direction: column;
                 gap: 12px;
+                position: static; /* Ensure it stacks on small screens */
+                margin-top: 20px; /* Add margin when static */
+                width: 100%; /* Take full width when static */
             }
         }
 
@@ -476,6 +490,11 @@
     </style>
 </head>
 <body class="selection:bg-blue-800 selection:text-white">
+    <video autoplay muted loop id="video-background">
+        <source src="3002466-hd_1920_1080_25fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     <div class="glow top"></div>
     <div class="glow bottom"></div>
 
@@ -494,7 +513,7 @@
     <div class="container mx-auto p-4 md:p-8">
         <div class="content-container flex flex-col items-center lg:items-start fade-in-section" style="--initial-delay: 0.3s;">
             <div class="lg:w-full p-6 md:p-10 text-white space-y-6">
-                <h1 class="text-section-title font-bold text-center">Our Comprehensive Services</h1>
+                <h1 class="text-section-title font-bold text-center white-glow">Our Comprehensive Services</h1>
 
                 <p>
                     Welcome to **SC SHRI INTERWORKS SRL**, a government-registered company operating under license nr.
@@ -502,9 +521,7 @@
                     top-tier Asian talent and the vibrant opportunities in Romania and across Europe.
                 </p>
 
-                <hr class="border-t border-gray-700 my-8" /> <!-- Added separator -->
-
-                <h2 class="text-sub-section-title font-semibold">Our Expertise and Experience</h2>
+                <hr class="border-t border-gray-700 my-8" /> <h2 class="text-sub-section-title font-semibold">Our Expertise and Experience</h2>
                 <p>
                     At SHRI INTERWORKS SRL, we specialize in connecting businesses like yours with highly skilled and
                     dedicated talent primarily from **India, Nepal, Sri Lanka, and Vietnam**. With over **10 years of
@@ -514,33 +531,27 @@
 
                 <div class="image-section">
                     <div class="image-card fade-in-section" style="--initial-delay: 0.5s;">
-                        <!-- Placeholder image for Construction & Engineering -->
-                        <img src="https://placehold.co/380x240/ff4500/FFFFFF?text=Construction+Pros" alt="Construction and Engineering Professionals">
+                        <img src="construction.jpg" alt="Construction and Engineering Professionals">
                         <div class="image-card-caption">Construction & Engineering Specialists</div>
                     </div>
                     <div class="image-card fade-in-section" style="--initial-delay: 0.6s;">
-                        <!-- Placeholder image for Hospitality -->
-                        <img src="https://placehold.co/380x240/ff8c00/FFFFFF?text=Hospitality+Experts" alt="Hospitality Services">
+                        <img src="hospitality.jpg" alt="Hospitality Services">
                         <div class="image-card-caption">Hospitality (Horeca) Professionals</div>
                     </div>
                     <div class="image-card fade-in-section" style="--initial-delay: 0.7s;">
-                        <!-- Placeholder image for Manufacturing -->
-                        <img src="https://placehold.co/380x240/ff4500/FFFFFF?text=Manufacturing+Workforce" alt="Manufacturing">
+                        <img src="manufacturing.jpg" alt="Manufacturing">
                         <div class="image-card-caption">Manufacturing & Metalworking Experts</div>
                     </div>
                      <div class="image-card fade-in-section" style="--initial-delay: 0.8s;">
-                        <!-- Placeholder image for Agriculture -->
-                        <img src="https://placehold.co/380x240/ff8c00/FFFFFF?text=Agriculture+Team" alt="Agriculture and Livestock">
+                        <img src="agriculture.jpg" alt="Agriculture and Livestock">
                         <div class="image-card-caption">Agriculture & Livestock Workforce</div>
                     </div>
                     <div class="image-card fade-in-section" style="--initial-delay: 0.9s;">
-                        <!-- Placeholder image for Textile -->
-                        <img src="https://placehold.co/380x240/ff4500/FFFFFF?text=Textile+Workers" alt="Textile and Leather">
+                        <img src="textile.jpg" alt="Textile and Leather">
                         <div class="image-card-caption">Skilled Textile & Leather Artisans</div>
                     </div>
                     <div class="image-card fade-in-section" style="--initial-delay: 1.0s;">
-                        <!-- Placeholder image for Electrical/Electronics -->
-                        <img src="https://placehold.co/380x240/ff8c00/FFFFFF?text=Tech+Specialists" alt="Electrical and Electronics">
+                        <img src="tech.jpg" alt="Electrical and Electronics">
                         <div class="image-card-caption">Electrical & Electronics Talent</div>
                     </div>
                 </div>
@@ -569,9 +580,7 @@
                     invaluable asset to any industry and a true complement to your existing team.
                 </p>
 
-                <hr class="border-t border-gray-700 my-8" /> <!-- Added separator -->
-
-                <h2 class="text-sub-section-title font-semibold">Our Value Proposition</h2>
+                <hr class="border-t border-gray-700 my-8" /> <h2 class="text-sub-section-title font-semibold">Our Value Proposition</h2>
                 <ol class="list-decimal pl-5 space-y-4">
                     <li>
                         <strong class="text-orange-300">Tailored Recruitment Service:</strong>
@@ -596,9 +605,7 @@
                     </li>
                 </ol>
 
-                <hr class="border-t border-gray-700 my-8" /> <!-- Added separator -->
-
-                <h2 class="text-sub-section-title font-semibold">Recruitment and Deployment Timeline</h2>
+                <hr class="border-t border-gray-700 my-8" /> <h2 class="text-sub-section-title font-semibold">Recruitment and Deployment Timeline</h2>
                 <p>
                     We strive for efficient placement while ensuring all legal and logistical requirements are met.
                     Here's a general timeline for our process:
@@ -634,8 +641,8 @@
 
     <footer id="footer" class="fade-in-section" style="--initial-delay: 1.2s;">
         <div class="footer-container">
-            <div class="footer-left-content">
-                <img src="logo.png" alt="SC SHRI INTERWORKS SRL Logo" />
+            <div class="footer-left">
+                <img src="logo.png" alt="Logo" />
                 <div class="footer-slogan">Empowering Global Workforce</div>
             </div>
 
@@ -651,17 +658,16 @@
             <div class="footer-section">
                 <h3>Our Services</h3>
                 <ul class="footer-list">
-                    <li><a href="#">Recruitment & Onboarding</a></li>
-                    <li><a href="#">Legal Migration Support</a></li>
-                    <li><a href="#">Language & Cultural Training</a></li>
+                    <li><a href="#">Recruitment & onboarding</a></li>
+                    <li><a href="#">Legal migration support</a></li>
+                    <li><a href="#">Language & cultural training</a></li>
                 </ul>
             </div>
 
-            <div class="footer-section footer-contact-info">
-                <h3>Contact Us</h3>
-                <p>Email: <a href="mailto:contact@shrinterworks.com">contact@shrinterworks.com</a></p>
-                <p>Phone: <a href="tel:+407XXXYYYZZZ">+40 7XXX YYY ZZZ</a></p>
-                <p>Address: [Your Company Address Here], Brasov, Romania</p>
+            <div class="footer-socials-bottom">
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
 
@@ -670,18 +676,10 @@
         <div class="footer-bottom-row">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms & Conditions</a>
-            <a href="#">Sitemap</a>
-            <a href="#">Cookies Policy</a>
+            <a href="#">Credits</a>
         </div>
 
-        <div class="footer-socials-bottom">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        </div>
-
-        <div class="footer-credit">© 2025 SC SHRI INTERWORKS SRL. All rights reserved. Developed by A-TEK Digital Studio.</div>
+        <div class="footer-credit">© A-TEK Digital Studio. All rights reserved, 2025.</div>
     </footer>
 
     <script>
@@ -698,6 +696,17 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('show');
+                        // Special handling for cards section to stagger them
+                        if (entry.target.classList.contains('cards-section')) {
+                            const cards = entry.target.querySelectorAll('.card');
+                            cards.forEach((card, index) => {
+                                card.style.setProperty('--card-delay', `${index * 0.1}s`);
+                                // Use a small timeout to ensure the CSS custom property is applied before adding 'show'
+                                setTimeout(() => {
+                                    card.classList.add('show');
+                                }, index * 100);
+                            });
+                        }
                         observer.unobserve(entry.target); // Stop observing once animated
                     }
                 });
@@ -713,6 +722,16 @@
                 // Otherwise, observe it to apply the animation when it enters the viewport.
                 if (initialDelay === 0 && section.getBoundingClientRect().top < window.innerHeight) {
                     section.classList.add('show');
+                    // If the cards section is in view on load, trigger its specific animation
+                    if (section.classList.contains('cards-section')) {
+                        const cards = section.querySelectorAll('.card');
+                        cards.forEach((card, index) => {
+                            card.style.setProperty('--card-delay', `${index * 0.1}s`);
+                            setTimeout(() => {
+                                card.classList.add('show');
+                            }, index * 100);
+                        });
+                    }
                 } else {
                     // For elements with an initial delay or those not immediately in view,
                     // delay the observation slightly to allow for staggered animations.
