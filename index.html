@@ -15,10 +15,18 @@
 
     body {
       margin: 0;
-      background-color: #0f0f11;
+      background: linear-gradient(135deg, #0f0f11, #1a1a1e, #0f0f11); /* Subtle gradient for entire body */
+      background-size: 200% 200%; /* Larger background to allow for animation */
+      animation: gradient-shift 15s ease infinite; /* Apply the animation */
       font-family: 'Segoe UI', sans-serif;
       color: #fff;
       overflow-x: hidden; /* Prevent horizontal scroll due to glow */
+    }
+
+    @keyframes gradient-shift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
 
     /* NAVIGATION */
@@ -138,24 +146,6 @@
       transform: scale(1.08);
     }
 
-    /* Updated Socials for Hero Section */
-    .socials {
-      display: flex;
-      justify-content: center; /* Center the single icon */
-      gap: 20px;
-      font-size: 24px;
-    }
-
-    .socials i {
-      color: #ff4500;
-      transition: 0.3s ease;
-    }
-
-    .socials i:hover {
-      transform: scale(1.3);
-      color: #ff8c00;
-    }
-
     /* Interactive Element Styles */
     .hero-interactive-element {
       position: absolute;
@@ -175,7 +165,7 @@
     /* CARDS SECTION */
     .cards-section {
       padding: 80px 40px;
-      background-color: #1a1a1e;
+      background-color: transparent; /* Keep transparent to show body gradient */
       text-align: center;
       position: relative; /* For z-index context */
       z-index: 1; /* Ensure it's above the main glow */
@@ -246,13 +236,13 @@
     }
 
     /* Placeholder styles for images - REMOVE when you add actual images */
-    .card:nth-child(1) .thumb { background-image: url('https://via.placeholder.com/350x260/FF5733/FFFFFF?text=Card+1'); }
-    .card:nth-child(2) .thumb { background-image: url('https://via.placeholder.com/350x260/33FF57/FFFFFF?text=Card+2'); }
-    .card:nth-child(3) .thumb { background-image: url('https://via.placeholder.com/350x260/3357FF/FFFFFF?text=Card+3'); }
-    .card:nth-child(4) .thumb { background-image: url('https://via.placeholder.com/350x260/FF33A1/FFFFFF?text=Card+4'); }
-    .card:nth-child(5) .thumb { background-image: url('https://via.placeholder.com/350x260/A133FF/FFFFFF?text=Card+5'); }
-    .card:nth-child(6) .thumb { background-image: url('https://via.placeholder.com/350x260/33FFD4/FFFFFF?text=Card+6'); }
-    .card:nth-child(7) .thumb { background-image: url('https://via.placeholder.com/350x260/FFD433/FFFFFF?text=Card+7'); }
+    .card:nth-child(1) .thumb { background-image: url('https://via.placeholder.com/350x260/FF5733/FFFFFF?text=Manufacturing'); }
+    .card:nth-child(2) .thumb { background-image: url('https://via.placeholder.com/350x260/33FF57/FFFFFF?text=Hospitality'); }
+    .card:nth-child(3) .thumb { background-image: url('https://via.placeholder.com/350x260/3357FF/FFFFFF?text=Healthcare'); }
+    .card:nth-child(4) .thumb { background-image: url('https://via.placeholder.com/350x260/FF33A1/FFFFFF?text=Construction'); }
+    .card:nth-child(5) .thumb { background-image: url('https://via.placeholder.com/350x260/A133FF/FFFFFF?text=Agriculture'); }
+    .card:nth-child(6) .thumb { background-image: url('https://via.placeholder.com/350x260/33FFD4/FFFFFF?text=IT'); }
+    .card:nth-child(7) .thumb { background-image: url('https://via.placeholder.com/350x260/FFD433/FFFFFF?text=Logistics'); }
     /* END Placeholder styles */
 
     .card .infos {
@@ -340,22 +330,41 @@
 
     /* FOOTER */
     footer {
-      background: #101010;
-      padding: 50px 40px 60px;
+      background: rgba(0, 0, 0, 0.5); /* Increased opacity for better content visibility */
+      padding: 30px 40px 40px 100px; /* Increased left padding */
       margin-top: 80px;
+      margin-left: 80px;
       position: relative;
+      overflow: hidden; /* Hide overflowing waves */
+      box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5); /* Subtle shadow at the top */
+      border-radius: 100px 100px 100px 100px; /* More rounded top corners */
+
+      /* Initial state for slide-up animation */
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    footer.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .footer-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      gap: 40px;
+      gap: 30px; /* Keep gap for spacing between sections */
       position: relative;
+      z-index: 2; /* Ensure content is above waves */
     }
 
     .footer-left {
       max-width: 300px;
+      display: flex; /* Added flex to footer-left */
+      flex-direction: column; /* Stack children vertically */
+      align-items: center; /* Center horizontally within footer-left */
+      text-align: center; /* Center text within footer-left */
     }
 
     .footer-left img {
@@ -367,12 +376,114 @@
       font-size: 0.9em;
       color: #ff8c00;
       font-style: italic;
-      text-shadow: 0 0 6px #ff8c00;
+      position: relative; /* Needed for pseudo-elements */
+      overflow: hidden; /* Hide overflowing glitch effects */
+      text-shadow: 0 0 6px #ff8c00; /* Keep some base glow */
+      margin-top: 5px; /* Added margin-top for spacing below logo */
+
+      /* Animation for slogan - Glitch effect */
+      animation: slogan-glitch 4s infinite linear alternate-reverse;
+      /* Removed white-space: nowrap; and display: inline-block; */
     }
+
+    /* Glitch effect pseudo-elements */
+    .footer-slogan::before,
+    .footer-slogan::after {
+      content: attr(data-text); /* Use the actual text for the glitch */
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      color: #ff4500; /* Different color for glitch layers */
+      filter: blur(1px);
+      opacity: 0.7;
+    }
+
+    .footer-slogan::before {
+      left: 2px;
+      text-shadow: -1px 0 #00f;
+      animation: glitch-anim-1 2s infinite linear alternate-reverse;
+    }
+
+    .footer-slogan::after {
+      left: -2px;
+      text-shadow: 1px 0 #f00;
+      animation: glitch-anim-2 2s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitch-anim-1 {
+      0% { transform: translate(0, 0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    @keyframes glitch-anim-2 {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(2px, -2px); }
+      50% { transform: translate(-2px, 2px); }
+      75% { transform: translate(2px, 2px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    @keyframes slogan-glitch {
+        0% {
+            text-shadow: 0 0 6px #ff8c00;
+            transform: translate(0, 0);
+        }
+        10% {
+            transform: translate(-1px, 1px);
+            text-shadow: 0 0 8px #ff4500, 0 0 10px #ff8c00;
+        }
+        20% {
+            transform: translate(1px, -1px);
+            text-shadow: 0 0 10px #ff8c00, 0 0 12px #ff4500;
+        }
+        30% {
+            transform: translate(-1px, -1px);
+            text-shadow: 0 0 8px #ff4500, 0 0 10px #ff8c00;
+        }
+        40% {
+            transform: translate(1px, 1px);
+            text-shadow: 0 0 6px #ff8c00;
+        }
+        50% {
+            transform: translate(-0.5px, 0.5px);
+        }
+        60% {
+            transform: translate(0.5px, -0.5px);
+        }
+        70% {
+            transform: translate(-0.5px, -0.5px);
+        }
+        80% {
+            transform: translate(0.5px, 0.5px);
+        }
+        90% {
+            transform: translate(-0.5px, -0.5px);
+        }
+        100% {
+            transform: translate(0, 0);
+            text-shadow: 0 0 6px #ff8c00;
+        }
+    }
+
 
     .footer-section {
       flex: 1;
-      min-width: 220px;
+      min-width: 200px;
+      /* Ensure no explicit right margin/padding on the section itself */
+      margin-right: 0;
+      padding-right: 0;
+    }
+
+    /* Specifically target the last footer-section to ensure it aligns right */
+    .footer-container .footer-section:last-child {
+        margin-right: 0;
+        padding-right: 0;
     }
 
     .footer-section h3 {
@@ -383,16 +494,39 @@
     }
 
     .footer-list {
-      list-style: disc;
-      padding-left: 20px;
-      line-height: 1.8;
+      list-style: none;
+      padding: 0;
+      line-height: 1.5;
       font-size: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 15px;
+      justify-content: flex-start;
+      flex-direction: column;
+    }
+
+    .footer-list li {
+        margin-bottom: 5px;
+    }
+
+    .footer-list li a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s ease, transform 0.3s ease;
+        display: inline-block;
+    }
+
+    .footer-list li a:hover {
+        color: #ff8c00;
+        transform: translateX(5px);
     }
 
     hr {
-      margin: 40px 0 20px;
+      margin: 30px 0 20px;
       border: 0;
       border-top: 1px solid #444;
+      z-index: 2;
+      position: relative;
     }
 
     .footer-bottom-row {
@@ -400,8 +534,10 @@
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 15px;
       margin-bottom: 10px;
+      z-index: 2;
+      position: relative;
     }
 
     .footer-bottom-row a {
@@ -415,32 +551,50 @@
       color: #fff;
     }
 
-    /* Updated Footer Socials */
-    .footer-socials-bottom {
-      position: static; /* Changed to static for better control in flexbox, or if only one icon remains */
-      display: flex;
-      justify-content: center; /* Center the single icon */
-      width: 100%; /* Ensure it takes full width for centering */
-      margin-top: 20px; /* Add some space above */
-      gap: 15px; /* Keep gap in case more icons are added later */
-    }
-
-    .footer-socials-bottom i {
-      color: #fff;
-      font-size: 18px;
-      transition: 0.3s ease;
-    }
-
-    .footer-socials-bottom i:hover {
-      color: #ff4500;
-      transform: scale(1.2);
-    }
-
     .footer-credit {
       text-align: center;
       font-size: 0.8em;
       color: #888;
       margin-top: 10px;
+      z-index: 2;
+      position: relative;
+    }
+
+    /* Wave Animation for Footer */
+    .footer-waves {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .wave {
+        background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/85482/wave.svg') repeat-x;
+        position: absolute;
+        top: -10px;
+        width: 6400px;
+        height: 100px;
+        animation: wave 30s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+        opacity: 0.3;
+    }
+
+    .wave:nth-of-type(2) {
+        top: -20px;
+        animation: wave 25s cubic-bezier(0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 25s ease-in-out -.125s infinite;
+        opacity: 0.5;
+    }
+
+    @keyframes wave {
+        0% { margin-left: 0; }
+        100% { margin-left: -1600px; }
+    }
+
+    @keyframes swell {
+        0%, 100% { transform: translate3d(0,-25px,0); }
+        50% { transform: translate3d(0,5px,0); }
     }
 
     /* New Global Entrance Effect Styles */
@@ -449,7 +603,7 @@
       transform: translateY(30px);
       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
       /* Add initial delay for navigation on page load */
-      transition-delay: var(--initial-delay, 0s); 
+      transition-delay: var(--initial-delay, 0s);
     }
 
     .fade-in-section.show {
@@ -492,18 +646,23 @@
         grid-template-columns: 1fr; /* Stack cards on small screens */
       }
 
+      footer {
+        padding: 30px 20px 40px 20px; /* Adjust footer padding for smaller screens */
+        border-radius: 20px 20px 0 0; /* Slightly less curve for mobile */
+      }
+
       .footer-container {
         flex-direction: column;
         align-items: center;
         text-align: center;
       }
 
-      /* Adjust footer socials for small screens */
-      .footer-socials-bottom {
-        position: static; /* Remove absolute positioning on small screens */
-        margin-top: 20px;
-        justify-content: center;
-        width: 100%;
+      .footer-section {
+        min-width: unset; /* Remove min-width on small screens */
+      }
+
+      .footer-list {
+        justify-content: center; /* Center list items on small screens */
       }
 
       .hero-interactive-element {
@@ -558,9 +717,6 @@
       <div class="buttons">
         <button>Our Partners →</button>
         <button>A Note from the Founder →</button>
-      </div>
-      <div class="socials">
-        <i class="fab fa-facebook-f"></i>
       </div>
     </div>
     <div class="hero-interactive-element"></div>
@@ -671,33 +827,41 @@
     </div>
   </section>
 
-  <footer id="footer" class="fade-in-section">
+  <footer id="footer">
+    <div class="footer-waves">
+        <div class="wave" id="wave1"></div>
+        <div class="wave" id="wave2"></div>
+    </div>
     <div class="footer-container">
       <div class="footer-left">
         <img src="logo.png" alt="Logo" />
-        <div class="footer-slogan">Empowering Global Workforce</div>
+        <div class="footer-slogan" data-text="Empowering Global Workforce">Empowering Global Workforce</div>
       </div>
 
       <div class="footer-section">
         <h3>Our Vision</h3>
         <ul class="footer-list">
-          <li>Empower cross-border employment</li>
-          <li>Promote ethical migration</li>
-          <li>Support life-changing opportunities</li>
+          <li><a href="#">Empower cross-border employment</a></li>
+          <li><a href="#">Promote ethical migration</a></li>
+          <li><a href="#">Support life-changing opportunities</a></li>
         </ul>
       </div>
 
       <div class="footer-section">
         <h3>Our Services</h3>
         <ul class="footer-list">
-          <li>Recruitment & onboarding</li>
-          <li>Legal migration support</li>
-          <li>Language & cultural training</li>
+          <li><a href="#">Recruitment & onboarding</a></li>
+          <li><a href="#">Legal migration support</a></li>
+          <li><a href="#">Language & cultural training</a></li>
         </ul>
       </div>
 
-      <div class="footer-socials-bottom">
-        <i class="fab fa-facebook-f"></i>
+      <div class="footer-section">
+        <h3>Connect With Us</h3>
+        <ul class="footer-list social-links">
+            <li><a href="https://www.facebook.com/your-page" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+            <li><a href="mailto:info@shriinterworks.com"><i class="fas fa-envelope"></i> Email Us</a></li>
+        </ul>
       </div>
     </div>
 
@@ -738,7 +902,10 @@
                 }, index * 100);
               });
             }
-            observer.unobserve(entry.target); // Stop observing once animated
+            // Stop observing fade-in sections once they are shown
+            if (!entry.target.classList.contains('footer')) { // Don't unobserve footer, handled separately
+                observer.unobserve(entry.target);
+            }
           }
         });
       }, observerOptions);
@@ -764,6 +931,28 @@
           }
         }
       });
+
+      // --- Footer specific Intersection Observer for slide-up effect ---
+      const footer = document.getElementById('footer');
+      if (footer) {
+        const footerObserverOptions = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.2 // Trigger when 20% of the footer is visible
+        };
+
+        const footerObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('show');
+              footerObserver.unobserve(entry.target); // Stop observing once animated
+            }
+          });
+        }, footerObserverOptions);
+
+        footerObserver.observe(footer);
+      }
+
 
       // --- Interactive Element (Dinosaur Effect Inspired) ---
       const heroSection = document.querySelector('.hero');
